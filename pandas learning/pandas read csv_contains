@@ -1,6 +1,10 @@
 import pandas as pd
 df = pd.read_csv(r'C:\Users\picheeng\Desktop\log.csv') 
-print(1,df)
+#print(1,df)
 df2=df[["Tool","offline"]]
-print(2,df2)
-print (3,df[df['Tool'].str.contains("KG")]) 
+#print(2,df2)
+print (df[df['Tool'].str.contains("KG")]) 
+print (df[df.Tool=="KG"]) 
+df.offline=df.offline*2
+df['總分'] = df['offline']*2
+print(df)
