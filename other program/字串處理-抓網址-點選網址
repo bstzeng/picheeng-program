@@ -1,0 +1,20 @@
+from selenium import webdriver
+import time
+
+link="sss<http://yahoo.com.tw> 12 459fkjfsj<http://yahoo.com.tw>   9fjdjf9kfjk<http://yahoo.com.tw>   fjikmdiej<http://yahoo.com.tw>ijfdjkjk"
+listAA=[]
+
+for i in range(1,len(link)):
+    if link[i]=="<":
+        for j in range(1,len(link)):
+            if link[j]==">" and j>i:
+                temp=link[i+1:j]
+                listAA.append(temp)
+                break
+print(listAA)
+
+for i in listAA:
+    driver = webdriver.Chrome()
+    driver.get(i) #前往這個網址
+    time.sleep(3)
+    driver.close()
