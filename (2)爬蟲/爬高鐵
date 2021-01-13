@@ -1,0 +1,49 @@
+import requests
+import json
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
+import time
+from seleniumrequests import Chrome
+payload={
+    "SearchType": "S",
+"Lang": "TW",
+"StartStation": "NanGang",
+"EndStation": "ZuoYing",
+"OutWardSearchDate": "2021/01/13",
+"OutWardSearchTime": "22:00",
+"ReturnSearchDate": "2021/01/13",
+"ReturnSearchTime": "22:00",
+"DiscountType":"" 
+    }
+
+#options = Options()
+#options.add_argument("--disable-notifications")
+ 
+#chrome = webdriver.Chrome('./chromedriver', chrome_options=options)
+#chrome.get("https://www.facebook.com/")
+#chrome.requests.post("https://www.thsrc.com.tw/TimeTable/Search",data=payload)
+
+
+webdriver = Chrome()
+response = webdriver.request('POST', 'https://www.thsrc.com.tw/TimeTable/Search', data=payload)
+print(response.text)
+
+#%%
+
+res=requests.post("https://www.thsrc.com.tw/TimeTable/Search",data=payload)
+#print (res.text)
+
+
+data2 = json.dumps(res.text, sort_keys=True, indent=4, separators=(',', ': '))
+print (data2)
+
+# 開啟檔案
+fp = open("filename.txt", "a")
+ 
+# 寫入 This is a testing! 到檔案
+fp.write(res.text)
+ 
+# 關閉檔案
+fp.close()
+
