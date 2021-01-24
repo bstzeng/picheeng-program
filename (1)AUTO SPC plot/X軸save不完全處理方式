@@ -1,0 +1,45 @@
+解決方式
+https://stackoverflow.com/questions/6705581/rotating-xticks-causes-the-ticks-partially-hidden-in-matplotlib
+
+19
+
+One good option is to rotate the tick labels.
+
+In your specific case, you might find it convenient to use figure.autofmt_xdate() (Which will rotate the x-axis labels among other things).
+
+Alternatively, you could do plt.setp(plt.xticks()[1], rotation=30) (or various other ways of doing the same thing).
+
+Also, as a several year later edit, with recent versions of matplotlib, you can call fig.tight_layout() to resize things to fit the labels inside the figure, as @elgehelge notes below.
+Share
+Improve this answer
+Follow
+edited Sep 17 '15 at 3:57
+answered Jul 16 '11 at 5:26
+
+Joe Kington
+230k6060 gold badges543543 silver badges441441 bronze badges
+Thanks a lot..figure.autofmt_xdate helps when rotation value is omitted..I have just laid my hands on the Sandro Tosi book..will help me learn more ,I guess – markjason72 Jul 16 '11 at 6:48
+add a comment
+ 
+18
+
+plt.tight_layout()
+But be sure to add this command after plt.plot() or plt.bar()
+Share
+Improve this answer
+Follow
+answered Jan 14 '14 at 19:25
+
+elgehelge
+1,36611 gold badge1313 silver badges1717 bronze badges
+Thanks. Works perfect ! – Mukesh Chapagain May 16 '15 at 8:15
+add a comment
+ 
+4
+
+Setting the bounding box when saving will also show the labels:
+
+figure.savefig('myplot.png', bbox_inches='tight')
+Share
+Improve this answer
+Follow
