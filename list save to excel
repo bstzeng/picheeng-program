@@ -1,0 +1,15 @@
+import pandas as pd
+
+def deal():
+	# 列表
+    company_name_list = ['腾讯', '阿里巴巴', '字节跳动', '腾讯']
+    
+    # list转dataframe
+    df = pd.DataFrame(company_name_list, columns=['company_name'])
+    
+    # 保存到本地excel
+    df.to_excel("company_name_li.xlsx", index=False)
+
+
+if __name__ == '__main__':
+    deal()
