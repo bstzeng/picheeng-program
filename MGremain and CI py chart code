@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+X=["R1","R2","R3","R4"]
+Y1=[11,12,10,14]
+Y2=[21,23,25,20]
+
+ironman_grid = plt.GridSpec(3, 3, wspace=0.4, hspace=0.3)
+print(ironman_grid)
+plt.subplot(ironman_grid[0:2,:]) #all row, 0 column
+plt.ylabel("MGremain")
+plt.plot(X,Y1)
+plt.subplot(ironman_grid[2,:]) #0 row, 1之後的所有column
+plt.ylabel("CI")
+plt.xlabel("36Zone")
+plt.plot(X,Y2)
